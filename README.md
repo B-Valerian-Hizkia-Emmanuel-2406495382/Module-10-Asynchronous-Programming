@@ -24,3 +24,9 @@ Each time I type in a client, all other client will receive the typed message fr
 ![alt text](image-1.png)
 ![alt text](image-2.png)
 ![alt text](image-3.png)
+
+# 2.2
+
+The program is still using the same WebSocket protocol. The client defines it in `client/src/main.rs` through the URI `ws://127.0.0.1:8080`, where the `ws://` scheme means the connection uses the WebSocket protocol.
+
+On the server, the protocol is handled in `server/src/main.rs`. The server first listens on `127.0.0.1:8080`, then `ServerBuilder::new().accept(socket).await?` upgrades the accepted TCP connection into a WebSocket stream.
