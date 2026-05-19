@@ -30,3 +30,9 @@ Each time I type in a client, all other client will receive the typed message fr
 The program is still using the same WebSocket protocol. The client defines it in `client/src/main.rs` through the URI `ws://127.0.0.1:8080`, where the `ws://` scheme means the connection uses the WebSocket protocol.
 
 On the server, the protocol is handled in `server/src/main.rs`. The server first listens on `127.0.0.1:8080`, then `ServerBuilder::new().accept(socket).await?` upgrades the accepted TCP connection into a WebSocket stream.
+
+# 2.3
+
+The sender information is added on the server side. When a client connects, `listener.accept().await?` returns both the socket and the client's address as `addr` and is passed into `handle_connection`.
+
+Every received text message is formatted with `format!("{addr}: {text}")`.

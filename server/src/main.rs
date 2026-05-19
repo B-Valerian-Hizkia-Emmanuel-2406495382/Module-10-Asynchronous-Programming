@@ -19,6 +19,7 @@ async fn handle_connection(
                 match msg {
                     Some(Ok(msg)) => {
                         if let Some(text) = msg.as_text() {
+                            println!("From client {addr}: {text}");
                             let text = format!("{addr}: {text}");
                             // It is okay if there are no active receivers.
                             let _ = bcast_tx.send(text);
