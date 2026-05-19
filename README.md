@@ -15,3 +15,12 @@ flowchart LR
     Executor -->|poll| Future
     Future -->|wake when ready| Queue
 ```
+
+# 2.1
+
+Each time I type in a client, all other client will receive the typed message from the first client. To run it, run the server first, then run all clients.
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
